@@ -23,7 +23,7 @@
   <br>
   <h2><u>Modelagem de Resfriamento de um Tanque</u> </h2>
   <br>  
-  <p>Deseja-se resfriar o fluido contido em um tanque cilíndrico de área transversal A por meio de uma jaqueta térmica. Neste sistema, há duas correntes de entrada: \( F_1 \) e \( F_2 \), nas temperaturas \( T_1 \) e \( T_2 \) respectivamente, e uma de saída \( F_3 \) na temperatura \( T_3 \). A jaqueta possui vazão de entrada \( F_{agr} \) igual à vazão de saída. A temperatura de entrada é denotada por \( T_{agr1} \) e a de saída, por \( T_{agr2} \). A área de troca térmica entre o tanque e a jaqueta é denotada por \( A_{tt} \).</p>
+  <p>Um fluido contido em um tanque cilíndrico de área transversal A está sendo resfriado por meio de uma jaqueta térmica. Antes desse momento não havia resfriamento e o processo estava em regime contínuo. A partir do momento que houve resfriamento (t = 0s), houve uma perturbação desse estado. Neste sistema, há duas correntes de entrada: \( F_1 \) e \( F_2 \), nas temperaturas \( T_1 \) e \( T_2 \) respectivamente, e uma de saída \( F_3 \) na temperatura \( T_3 \). A jaqueta possui vazão de entrada \( F_{agr} \) igual à vazão de saída. A temperatura de entrada é denotada por \( T_{agr1} \) e a de saída, por \( T_{agr2} \). A área de troca térmica entre o tanque e a jaqueta é denotada por \( A_{tt} \).</p>
   <br><br>
   <div style="display:flex; justify-content:center;">
     <div class="aligncenter" style="background-color: white; max-width: 400px">    
@@ -36,7 +36,7 @@
   <br>    
   <section>$$\large {dh\over dt} = {1\over A} [F_1(t)+F_2(t)-F_3(t)]  $$</section>
   <br>
-  <section>$$\large {dT_3\over dt}  = {1 \over Ah} \Bigg (-T_3(F_1+F_2) + F_1T_1 + F_2T_2 - {UA_{tt} \over &rho;Cp}(T_3 - T_agr2) \Bigg) $$ </section>
+  <section>$$\large {dT_3\over dt}  = {1 \over Ah} \Bigg (-T_3(F_1+F_2) + F_1T_1 + F_2T_2 - {UA_{tt} \over &rho;Cp}(T_3 - T_{agr2}) \Bigg) $$ </section>
   <br>
   <section>
     $$ \large {dT_{agr2} \over dT} = {1 \over V_c}(T_{agr1} - T_{agr2}) + {UA_{tt} \over &rho;Cp}(T_3 - T_{agr2})$$
@@ -69,15 +69,20 @@
   <h3>Variáveis de Entrada no Estado Estacionário:</h3>
   <p>\( F_1(t)  = 1 + {\large{0,5 \over 1 + t}} {m^3 s^{-1}} \)</p>
   <p>\( F_2(t) = 1 + {\large{0,5 \over 1 + t}} {m^3 s^{-1}} \)</p>
-  <p>\( F_3(t) = 1; \) se \( t < 5 \) </p>
-  <p>\( F_3(t) = F_1 + F_2 \) se \( t \geq 5 \) </p>
+  <p>\( F_3(t) = 1 {m^3 s^{-1}}\); se \( t < 5 \) </p>
+  <p>\( F_3(t) = F_1 + F_2 \); se \( t \geq 5 \) </p>
   <p>\( F_{agr}(t) =  5 + {0,2 \over t + 1}{m^3 s^{-1}} \)</p>
   <p>\( T_1 = 473 K \)</p>
   <p>\( T_2(t) = 573 K \); se \( t < 2s \)</p>
   <p>\( T_2(t) = 573 + {\large {100 \over t + 1}} K\); se \( t \geq 2s \)</p>
   <p>\( T_{agr1} = 303 K \)</p>
   <br><br>
-
+  <h3>Variáveis de Saída no Estado Estacionário (Variáveis do PVI):</h3>
+  <p>\(h = 10 m \) </p>
+  <p>\(T_3 = 373 K \) </p>
+  <p>\(T_{agr2} = 373 K \) </p>
+  
+  <h3>Resolução:</h3>
   <p>Você pode usar o <a href="https://pt.wikipedia.org/wiki/M%C3%A9todo_de_Runge-Kutta">Método Range-Kutta</a> de 4ª ordem para resolver um problema de valor inicial:</p>
   <section>$$ y'(t) = f(t,y)$$</section>
   <section>$$ y_o = y(t_o)$$</section>
