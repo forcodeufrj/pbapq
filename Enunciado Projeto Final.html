@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projeto Final</title>
+  <link rel="stylesheet" type="text/css" href="https://gitcdn.link/repo/forcodeufrj/identidade-visual/main/identidade-visual.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <h1></h1>
+  <br><br><br>
+  <div class="aligncenter">
+    <img src="https://lh3.googleusercontent.com/82tLcCZvxXGvPD6Q9Mpe006EONHBCxpV8g24itpiYnXYzyUpyVAQ4z6I2BS8q2I0c-FBHQ9os9jo9sx2ROe9TWTpQOFJ0jrAmwGP9aeWnps0CAqxxN_w0qgB_-aMemkxosAezcidgg=w2400" style="max-width: 150px;">
+  </div>
+  <br><br>
+  <h1>Projeto Final</h1> 
+  <h3>Python Básico Aplicado a Processos Químicos</h3>
+  <br>
+  <h2><u>Modelagem de Resfriamento de um Tanque</u> </h2>
+  <br>  
+  <p>Deseja-se resfriar o fluido contido em um tanque cilíndrico de área transversal A por meio de uma jaqueta térmica. Neste sistema, há duas correntes de entrada: \( F_1 \) e \( F_2 \), nas temperaturas \( T_1 \) e \( T_2 \) respectivamente, e uma de saída \( F_3 \) na temperatura \( T_3 \). A jaqueta possui vazão de entrada \( F_{agr} \) igual à vazão de saída. A temperatura de entrada é denotada por \( T_{agr1} \) e a de saída, por \( T_{agr2} \). A área de troca térmica entre o tanque e a jaqueta é denotada por \( A_{tt} \).</p>
+  <br><br>
+  <div style="display:flex; justify-content:center;">
+    <div class="aligncenter" style="background-color: white; max-width: 400px">    
+      <img src="https://lh3.googleusercontent.com/dyW1nnZ-V_T8XlOzzMBWvsKEUjlu_2cKP2slEbOxZynPePeuHb5xLHQBzx9miZlB7yzlUNPErOySFoXgL1wZJDWt9dhS7pBVXqPGZpw7KweoSPpVIx_evVK-3gGHWJQRtvVWF0ESHg=w2400"
+      alt="tanque de resfriamento">
+    </div> 
+  </div>
+  <br><br>
+  <p>As variáveis de saída do processo são descritas pelas seguintes Equações Diferenciais Ordinárias (EDO's):</a></p>
+  <br>    
+  <section>$$\large {dh\over dt} = {1\over A} [F_1(t)+F_2(t)-F_3(t)]  $$</section>
+  <br>
+  <section>$$\large {dT_3\over dt}  = {1 \over Ah} \Bigg (-T_3(F_1+F_2) + F_1T_1 + F_2T_2 - {UA_{tt} \over &rho;Cp}(T_3 - T_agr2) \Bigg) $$ </section>
+  <br>
+  <section>
+    $$ \large {dT_{agr2} \over dT} = {1 \over V_c}(T_{agr1} - T_{agr2}) + {UA_{tt} \over &rho;Cp}(T_3 - T_{agr2})$$
+  </section>
+  <p>As seguintes hipóteses foram utilizadas para se obter as equações acima:</p>
+  <ol>
+    <li>Tanque Cilíndrico.</li>
+    <li>Densidade constante para os fluidos da camisa e do tanque (mesmo fluido).</li>
+    <li>Volume da camisa constante e completamente cheia \( \rightarrow \) Fagr1 = Fagr2 = Fagr; \( V_c = c^{te} \).</li>
+    <li>Cp fluido da camisa = Cp fluido do tanque.</li>
+    <li>Energia potencial e cinética desprezíveis frente à energia interna.</li>
+    <li>Não há reação química.</li>
+    <li>Sistema isolado (as únicas trocas de calor são entre o tanque e a jaqueta.)</li>
+  </ol>    
+  <br>
+  <p>Utilizando o Python, gere gráficos que descrevam a evolução do processo, com o decorrer do tempo:</p>
+  <ol>
+    <li>Gráfico 1: A variação da altura do tempo.</li>
+    <li>Gráfico 2: A variação das temperaturas de saída \( T_3 \) e \( T_{agr2} \)</li>
+  </ol>
+  <br><br>
+  <h3>Constantes:</h3>
+  <p> Área transversal do tanque \( \rightarrow A = 10 m^2 \) </p>
+  <p> Energia Interna ponderal \( \rightarrow U = 419000 {J \over kg} \) </p>
+  <p> Área de troca térmica jaqueta-tanque \( \rightarrow A_{tt} = 20 m^2 \)</p>
+  <p> Densidade dos fluidos \( \rightarrow \rho = 958 {kg \over m^2} \)</p>
+  <p> Capacidade calorífica ponderal a pressão constante \( \rightarrow C_p = 4220 {J \over Kg \cdot K} \)</p>
+  <p> Volume de fluido na jaqueta de resfriamento \( \rightarrow V = 100 m^3 \)</p>
+  <br>
+  <h3>Variáveis de Entrada no Estado Estacionário:</h3>
+  <p>\( F_1(t)  = 1 + {\large{0,5 \over 1 + t}} {m^3 s^{-1}} \)</p>
+  <p>\( F_2(t) = 1 + {\large{0,5 \over 1 + t}} {m^3 s^{-1}} \)</p>
+  <p>\( F_3(t) = 1; \) se \( t < 5 \) </p>
+  <p>\( F_3(t) = F_1 + F_2 \) se \( t \geq 5 \) </p>
+  <p>\( F_{agr}(t) =  5 + {0,2 \over t + 1}{m^3 s^{-1}} \)</p>
+  <p>\( T_1 = 473 K \)</p>
+  <p>\( T_2(t) = 573 K \); se \( t < 2s \)</p>
+  <p>\( T_2(t) = 573 + {\large {100 \over t + 1}} K\); se \( t \geq 2s \)</p>
+  <p>\( T_{agr1} = 303 K \)</p>
+  <br><br>
+
+  <p>Você pode usar o <a href="https://pt.wikipedia.org/wiki/M%C3%A9todo_de_Runge-Kutta">Método Range-Kutta</a> de 4ª ordem para resolver um problema de valor inicial:</p>
+  <section>$$ y'(t) = f(t,y)$$</section>
+  <section>$$ y_o = y(t_o)$$</section>
+  <section>$$ h = t_{n+1} - t_n$$</section>
+  <section>$$ y_{n+1} = y_n + {h\over 6}(k_1 + 2k_2 + 2k_3 + k_4)$$</section>
+  <section>$$ k_1 = f(t_n,y_n)$$</section>
+  <section>$$ k_2 = f(t_n + {h \over 2},y_n + {h \over 2 }k1)$$</section>
+  <section>$$ k_3 = f(t_n + {h \over 2},y_n + {h \over 2 }k2)$$</section>
+  <section>$$ k_4 = f(t_n + {h \over 2},y_n + {h \over 2 }k3)$$</section>
+  <br><br>
+  <p>Se você ainda estiver com muita dúvida sobre o método, dê uma olhada no <a href="https://pt.wikipedia.org/wiki/M%C3%A9todo_de_Euler">método de Euler explícito</a>, que tem exatamente o mesmo propósito, mas é menos preciso. Se você achar melhor, pode usar este método no lugar.</p>
+  <br>
+  <h2>Sugestão de Resolução</h2>
+  <ol>
+    <li>Crie as funções <i>dhdt</i>, <i>dt3dt</i>, <i>dtagr2dt</i>,  que recebem todas as variáveis da respectiva EDO e gera um valor.</li>
+    <li>
+      Crie a função <i>rungekutta</i>, que é capaz de gerar \( y_{n+1}\). 
+      <ol>
+        <li>Note que as derivadas de cada EDO servirá como o \( f(t,y) \) para o método Runge-Kutta.</li>
+      </ol>
+    </li>
+    <li>Gere novos \( y_{n+1}\) enquanto houver valores de t, em uma lista de tempos usada como entrada.</li>
+    <li>Guarde todos os valores de y em uma lista.</li>
+      <ol><li>Utilize uma lista para cada uma das variáveis.</li></ol>
+    <li>Utilize os resultados da lista para plotar o gráfico.</li>
+  </ol>
+  <br><br> 
+
+  <h2>Sobre a Avaliação</h2>
+  <h3>Como será a avaliação</h3>
+
+  <ol>
+    <li>Você realizará uma apresentação, em horário a combinar, para apresentar o seu projeto.</li>
+    <li>Não é necessário montar uma apresentação ou escrever um relatório. Entretanto, a construção de um pseudocódigo
+      é
+      encorajada para a explicação do mesmo.</li>
+    <li>O código e o pseudocódigo são os recursos visuais adequados para a apresentação.</li>
+    <li>O código deve ser enviado com, <b>no mínimo</b>, 24 horas de antecedência à apresentação, para exame prévio.
+    </li>
+    <li>É ideal que a apresentação não tenha mais de 10 minutos, somados a 10 minutos de arguição. A arguição será
+      tanto
+      da apresentação quanto do código enviado previamente.</li>
+  </ol>
+
+  <h3>Para a aprovação</h3>
+
+  <ol>
+    <li>Você precisará obter uma pontuação mínima 7/10.</li>
+    <li>Um feedback demarcando a pontuação e os erros identificados serão mostrados e são passíveis de revisão, por
+      qualquer uma das partes que se manifeste.</li>
+    <li>Em caso de reprovação, você terá o direito de fazer uma nova apresentação, marcando um novo horário. É
+      esperado
+      que você use o feedback recebido para consertar o seu código.</li>
+  </ol>
+
+  <h3>O que será avaliado</h3>
+
+  <ol>
+    <li>Apresentação estética do código (1/10)
+      <ol>
+        <li>Espaçamento de caracteres e linhas consistente. (0.5/1)</li>
+        <li>Indentação consistente. (0.5/1)</li>
+      </ol>
+    </li>
+    <li>
+      Legibilidade do código (3/10)
+      <ol>
+        <li>Nomenclatura adequada de variáveis, funções, objetos, métodos, etc. (1/3)</li>
+        <li>Comentários, onde for adequado, e com parcimônia. (1/3)</li>
+        <li>Usar sintaxes condensadas quando adequado (compreensão de listas, map, funções lambda, etc.) (1/3)</li>
+      </ol>
+    </li>
+    <li>Capacidade de descrever/apresentar a resolução de maneira clara (3/10)
+      <ol>
+        <li>Descrever/apresentar a estrutura do código. (2/3)</li>
+        <li>Descrever/apresentar possíveis melhorias ao código. (1/3)
+          <ol>
+            <li>Onde considerar cabível, apontar redundância, pontos para refatoramento, reescrita para clareza, etc.
+              (1/1)</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li>O código (3/10)
+      <ol>
+        <li>Funções sem sobracarga de responsabilidade. (0.5/3)</li>
+        <li>Resultados Parciais. (1/3)
+          <ol>
+            <li>Correto</li>
+            <li>Se incorreto, apontar onde está o erro.</li>
+          </ol>
+        </li>
+        <li>Resultado. (1.5/3)
+          <ol>
+            <li>Correto</li>
+            <li>Se incorreto, apontar onde está o erro.</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+
+  <h3>Recomendações</h3>
+  <ol>
+    <li>Não exite em tirar dúvidas</li>
+    <li>Recicle código dos notebooks</li>    
+    <li>Um resultado correto demanda tempo e paciência.
+      <i>De toda forma, note que é possível tirar a nota máxima sem ter acertado o valor final.</i>
+    </li>
+  </ol>
+</body>
+
+</html>
