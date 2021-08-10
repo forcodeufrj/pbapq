@@ -45,7 +45,7 @@
   <ol>
     <li>Tanque Cilíndrico.</li>
     <li>Densidade constante para os fluidos da camisa e do tanque (mesmo fluido).</li>
-    <li>Volume da camisa constante e completamente cheia \( \rightarrow \) Fagr1 = Fagr2 = Fagr; \( V_c = c^{te} \).</li>
+    <li>Volume da camisa constante e completamente cheia \( \rightarrow \) Fagr1 = Fagr2 = Fagr; \( V_c \) é constante.</li>
     <li>Cp fluido da camisa = Cp fluido do tanque.</li>
     <li>Energia potencial e cinética desprezíveis frente à energia interna.</li>
     <li>Não há reação química.</li>
@@ -64,7 +64,7 @@
   <p> Área de troca térmica jaqueta-tanque \( \rightarrow A_{tt} = 20 m^2 \)</p>
   <p> Densidade dos fluidos \( \rightarrow \rho = 958 {kg \over m^2} \)</p>
   <p> Capacidade calorífica ponderal a pressão constante \( \rightarrow C_p = 4220 {J \over Kg \cdot K} \)</p>
-  <p> Volume de fluido na jaqueta de resfriamento \( \rightarrow V = 100 m^3 \)</p>
+  <p> Volume de fluido na jaqueta de resfriamento \( \rightarrow V_c = 100 m^3 \)</p>
   <br>
   <h3>Variáveis de Entrada no Estado Estacionário:</h3>
   <p>\( F_1(t)  = 1 + {\large{0,5 \over 1 + t}} {m^3 s^{-1}} \)</p>
@@ -89,9 +89,9 @@
   <section>$$ h = t_{n+1} - t_n$$</section>
   <section>$$ y_{n+1} = y_n + {h\over 6}(k_1 + 2k_2 + 2k_3 + k_4)$$</section>
   <section>$$ k_1 = f(t_n,y_n)$$</section>
-  <section>$$ k_2 = f(t_n + {h \over 2},y_n + {h \over 2 }k1)$$</section>
-  <section>$$ k_3 = f(t_n + {h \over 2},y_n + {h \over 2 }k2)$$</section>
-  <section>$$ k_4 = f(t_n + {h \over 2},y_n + {h \over 2 }k3)$$</section>
+  <section>$$ k_2 = f(t_n + {h \over 2},y_n + {h \over 2 }k_1)$$</section>
+  <section>$$ k_3 = f(t_n + {h \over 2},y_n + {h \over 2 }k_2)$$</section>
+  <section>$$ k_4 = f(t_n + h,y_n + h k_3)$$</section>
   <br><br>
   <p>Se você ainda estiver com muita dúvida sobre o método, dê uma olhada no <a href="https://pt.wikipedia.org/wiki/M%C3%A9todo_de_Euler">método de Euler explícito</a>, que tem exatamente o mesmo propósito, mas é menos preciso. Se você achar melhor, pode usar este método no lugar.</p>
   <br>
